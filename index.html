@@ -3,250 +3,336 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our 7 Months 🤍</title>
+<title>Untuk Sayangku 🤍</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
 
 <style>
+:root {
+  --bg1: #1a0b1c;
+  --bg2: #0f0c1b;
+  --bg3: #2a0820;
+  --bg4: #2b1630;
+  --accent: #ffd6e7;
+  --glass: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.1);
+}
+
+* { box-sizing: border-box; }
+
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #0b0b0b;
-    color: white;
-    overflow-x: hidden;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(-45deg, var(--bg1), var(--bg2), var(--bg3), var(--bg4));
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-/* SECTION */
-section {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    text-align: center;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 1s ease;
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-section.show {
-    opacity: 1;
-    transform: translateY(0);
+.card {
+  width: 90%;
+  max-width: 400px;
+  padding: 30px;
+  border-radius: 24px;
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 15px rgba(255,255,255,0.05);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* TEXT */
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 h1 {
-    font-size: 2.5em;
-    font-weight: 600;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6em;
+  margin-bottom: 15px;
+  color: var(--accent);
+  letter-spacing: 0.5px;
 }
 
 p {
-    max-width: 600px;
-    line-height: 1.7;
-    opacity: 0.8;
+  font-size: 0.95em;
+  line-height: 1.8;
+  opacity: 0.9;
+  margin: 15px 0;
+  min-height: 140px;
 }
 
-/* BUTTON */
-button {
-    padding: 10px 20px;
-    border-radius: 20px;
-    border: none;
-    background: rgba(255,255,255,0.1);
-    color: white;
-    backdrop-filter: blur(10px);
-    cursor: pointer;
-    margin-top: 20px;
+.media {
+  width: 100%;
+  border-radius: 16px;
+  margin: 20px 0;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* IMAGE */
-.photo {
-    width: 250px;
-    border-radius: 20px;
-    margin-top: 20px;
-    transition: 0.5s;
+.media img {
+  width: 100%;
+  display: block;
+  transition: transform 3s ease;
 }
 
-.photo:hover {
-    transform: scale(1.05);
+.media video {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  display: block;
 }
 
-/* VIDEO POTRAIT FIX */
-.video-wrapper {
-    width: 250px;
-    height: 450px;
-    overflow: hidden;
-    border-radius: 20px;
+.btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #ff8fb1, #ffc2d9);
+  color: #2b0015;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 143, 177, 0.3);
+  opacity: 0;
+  pointer-events: none;
 }
 
-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.btn.show {
+  opacity: 1;
+  pointer-events: auto;
+  animation: pulse 2s infinite;
 }
 
-/* MUSIC BUTTON */
-.music-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: rgba(255,255,255,0.1);
-    padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 143, 177, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 143, 177, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 143, 177, 0); }
 }
 
-/* COUNTDOWN */
-.countdown {
-    font-size: 2em;
-    margin-top: 20px;
+.music {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
 }
 
-/* HEART FLOAT */
 .heart {
-    position: fixed;
-    bottom: -10px;
-    font-size: 20px;
-    animation: floatUp 5s linear infinite;
+  position: fixed;
+  bottom: -20px;
+  font-size: 16px;
+  animation: floatUp linear infinite;
+  opacity: 0;
+  z-index: -1;
 }
 
 @keyframes floatUp {
-    to {
-        transform: translateY(-110vh);
-        opacity: 0;
-    }
+  0% { transform: translateY(0) scale(0.8) rotate(0deg); opacity: 0; }
+  20% { opacity: 0.5; }
+  100% { transform: translateY(-120vh) scale(1.2) rotate(360deg); opacity: 0; }
+}
+
+#start-screen {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg1);
+  z-index: 50;
+  transition: opacity 1s ease;
 }
 </style>
 </head>
 
 <body>
 
-<!-- MUSIC -->
 <audio id="music" loop>
-  <source src="music.mp3">
+  <source src="./music.mp3" type="audio/mpeg">
 </audio>
 
-<div class="music-btn" onclick="toggleMusic()">🎵</div>
+<div class="music" onclick="toggleMusic()" id="music-btn" style="display:none;">🎵</div>
+
+<div id="start-screen">
+  <h1 style="font-size: 2em; margin-bottom: 20px;">Halo, Sayang 🤍</h1>
+  <button class="btn show" style="opacity: 1; pointer-events: auto;" onclick="startJourney()">Buka Suratnya</button>
+</div>
+
+<div id="app" style="display: none;"></div>
 
 <script>
-function toggleMusic(){
-    let music = document.getElementById("music");
-    if(music.paused){
-        music.play();
-    } else {
-        music.pause();
-    }
+const scenes = [
+{
+  title: "Happy 7th Monthversary 🤍",
+  img: "./foto1.jpg",
+  text: "Hai, Sayang...\n\nNggak kerasa ya, perjalanan kita sudah sampai di bulan ke tujuh. Makasih banyak sudah bersabar menghadapi aku selama ini.",
+  btn: "Lanjut"
+},
+{
+  img: "./foto2.jpg",
+  text: "Aku tahu bulan ini benar-benar nggak mudah buat kita. Kita sempat kehilangan arah, bahkan hampir memilih jalan masing-masing.\n\nTernyata, hidup tanpa kamu itu jauh lebih menakutkan daripada masalah apapun yang kita hadapi. Aku nggak sanggup kalau itu benar-benar terjadi.",
+  btn: "Satu hal lagi..."
+},
+{
+  video: "./video.mp4",
+  text: "Video ini isinya semua kenangan manis yang pernah kita buat. Setiap tawa di situ adalah alasan kenapa aku nggak mau menyerah.\n\nAku berharap, ke depannya kita bisa buat jauh lebih banyak kenangan indah lagi. Yang lebih hangat, lebih tenang, dan tentunya... selamanya sama kamu.",
+  btn: "Next"
+},
+{
+  img: "./foto3.jpg",
+  text: "Makasih ya, Sayang, sudah mau menurunkan ego dan memilih untuk pulang ke aku lagi. Makasih sudah percaya kalau kita masih punya masa depan.\n\nJanji ya, kalau nanti ada badai lagi, kita jangan lepas pegangan. Berantem secukupnya, tapi sayangnya harus selamanya.",
+  btn: "Terakhir dari hatiku..."
+},
+{
+  title: "I Love You, Always 🤍",
+  text: "Mungkin aku bukan yang paling sempurna di dunia ini, tapi aku pastikan kamu adalah satu-satunya yang aku tuju.\n\nSelamat tujuh bulan, Sayang. Mari menua bersama dan saling melengkapi, ya?",
+  btn: "Pesan Terakhir 🤍",
+  last: true
 }
-</script>
+];
 
-<!-- FLOAT HEART -->
-<script>
-setInterval(() => {
-    let heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "🤍";
-    heart.style.left = Math.random()*100+"vw";
-    document.body.appendChild(heart);
+let currentScene = 0;
+let typeInterval;
 
-    setTimeout(()=>heart.remove(),5000);
-}, 800);
-</script>
+function startJourney() {
+  document.getElementById("start-screen").style.opacity = '0';
+  setTimeout(() => {
+    document.getElementById("start-screen").style.display = 'none';
+    document.getElementById("app").style.display = 'block';
+    document.getElementById("music-btn").style.display = 'flex';
+    
+    let audio = document.getElementById("music");
+    audio.volume = 0.5;
+    audio.play().catch(e => console.log("Audio play failed:", e));
+    
+    renderScene();
+  }, 1000);
+}
 
-<!-- SECTION 1 -->
-<section>
-    <h1>Happy 7th Monthversary 🤍</h1>
-    <p>Scroll pelan ya… aku ada sesuatu buat kamu</p>
-</section>
+function typeWriter(element, text, index, buttonElement) {
+  if (index < text.length) {
+    let char = text.charAt(index);
+    if (char === '\n') {
+      element.innerHTML += '<br>';
+    } else {
+      element.innerHTML += char;
+    }
+    typeInterval = setTimeout(() => typeWriter(element, text, index + 1, buttonElement), 50);
+  } else {
+    buttonElement.classList.add('show');
+  }
+}
 
-<!-- SECTION 2 -->
-<section>
-    <p>
-    7 bulan ini… bukan cuma tentang waktu,  
-    tapi tentang semua hal yang kita lewati bareng.
-    </p>
-</section>
+function renderScene() {
+  let s = scenes[currentScene];
+  let app = document.getElementById("app");
+  
+  if(app.children.length > 0) {
+    app.children[0].classList.remove('visible');
+  }
 
-<!-- FOTO 1 -->
-<section>
-    <img src="foto1.jpg" class="photo">
-</section>
+  setTimeout(() => {
+    let html = `<div class="card" id="card-content">`;
+    if(s.title) html += `<h1>${s.title}</h1>`;
+    if(s.img) html += `<div class="media"><img src="${s.img}"></div>`;
+    if(s.video) html += `<div class="media"><video autoplay muted loop playsinline><source src="${s.video}" type="video/mp4"></video></div>`;
+    html += `<p id="text-container"></p>`;
+    if(!s.last){
+      html += `<button class="btn" id="action-btn" onclick="nextScene()">${s.btn}</button>`;
+    } else {
+      html += `<button class="btn" id="action-btn" onclick="revealFinal()">🤍</button>`;
+    }
+    html += `</div>`;
+    app.innerHTML = html;
 
-<!-- SECTION 3 -->
-<section>
-    <p>
-    Terima kasih…  
-    karena kamu tetap memilih untuk stay,  
-    bahkan di saat semuanya gak mudah.
-    </p>
-</section>
+    setTimeout(() => {
+      document.getElementById('card-content').classList.add('visible');
+      let textContainer = document.getElementById('text-container');
+      let actionBtn = document.getElementById('action-btn');
+      clearTimeout(typeInterval);
+      typeWriter(textContainer, s.text, 0, actionBtn);
+    }, 100);
+  }, app.children.length > 0 ? 500 : 0);
+}
 
-<!-- FOTO 2 -->
-<section>
-    <img src="foto2.jpg" class="photo">
-</section>
+function nextScene() {
+  currentScene++;
+  renderScene();
+}
 
-<!-- VIDEO -->
-<section>
-    <h2>Our Memories 🎥</h2>
-    <div class="video-wrapper">
-        <video controls>
-            <source src="video.mp4">
-        </video>
+function revealFinal() {
+  let app = document.getElementById("app");
+  app.children[0].classList.remove('visible');
+
+  setTimeout(() => {
+    let finalHtml = `
+    <div class="card" id="card-content">
+      <h1 style="font-style: italic;">Untuk kamu...</h1>
+      <p id="text-container"></p>
     </div>
-</section>
+    `;
+    app.innerHTML = finalHtml;
 
-<!-- FOTO 3 -->
-<section>
-    <img src="foto3.jpg" class="photo">
-</section>
+    setTimeout(() => {
+      document.getElementById('card-content').classList.add('visible');
+      let finalText = "Kalau nanti dunia terasa berat lagi, tolong ingat momen kita hari ini.\n\nDari awal, aku selalu memilih kamu. Dan setelah semua yang kita lalui, aku sadar kalau aku akan terus memilih kamu, berulang kali, tanpa ragu sedikit pun.\n\nSelamat hari jadi yang ke-7 bulan, Sayang.\nAku sayang kamu, sangat.";
+      let textContainer = document.getElementById('text-container');
+      let dummyBtn = document.createElement('div'); 
+      clearTimeout(typeInterval);
+      typeWriter(textContainer, finalText, 0, dummyBtn);
+    }, 100);
+  }, 500);
+}
 
-<!-- SECTION 4 -->
-<section>
-    <p>
-    Aku gak janji semuanya akan selalu mudah…  
-    tapi aku mau kita tetap saling milih.
-    </p>
-</section>
-
-<!-- COUNTDOWN -->
-<section>
-    <h2>Menuju 1 Tahun Kita ⏳</h2>
-    <div class="countdown" id="countdown"></div>
-</section>
-
-<!-- FINAL -->
-<section>
-    <h1>I’m glad it’s you 🤍</h1>
-    <p>
-    Thanks for not giving up on us.
-    </p>
-</section>
-
-<script>
-/* SCROLL ANIMATION */
-const sections = document.querySelectorAll("section");
-
-window.addEventListener("scroll", () => {
-    sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if(top < window.innerHeight - 100){
-            sec.classList.add("show");
-        }
-    });
-});
-
-/* COUNTDOWN */
-const targetDate = new Date("2026-09-17").getTime(); // ubah sesuai tanggal jadian 1 tahun
+function toggleMusic() {
+  let m = document.getElementById("music");
+  let btn = document.getElementById("music-btn");
+  if (m.paused) {
+    m.play();
+    btn.style.opacity = "1";
+  } else {
+    m.pause();
+    btn.style.opacity = "0.5";
+  }
+}
 
 setInterval(() => {
-    const now = new Date().getTime();
-    const gap = targetDate - now;
-
-    const d = Math.floor(gap / (1000*60*60*24));
-    const h = Math.floor((gap / (1000*60*60)) % 24);
-    const m = Math.floor((gap / (1000*60)) % 60);
-
-    document.getElementById("countdown").innerHTML =
-    d + " hari " + h + " jam " + m + " menit";
-}, 1000);
+  let h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = ["🤍", "✨", "💕"][Math.floor(Math.random() * 3)];
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.animationDuration = (Math.random() * 3 + 4) + "s";
+  h.style.fontSize = (Math.random() * 10 + 10) + "px";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 7000);
+}, 800);
 </script>
 
 </body>
