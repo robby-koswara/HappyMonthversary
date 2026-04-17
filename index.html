@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Untuk Sayangku 🤍</title>
+<title>Buat Sayangku Tersayang ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
 
@@ -22,15 +22,17 @@
 
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Inter', sans-serif;
   background: linear-gradient(-45deg, var(--bg1), var(--bg2), var(--bg3), var(--bg4));
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
   color: #fff;
   height: 100vh;
+  width: 100vw;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; /* Memastikan kartu benar-benar di tengah secara horizontal */
   overflow: hidden;
 }
 
@@ -40,9 +42,12 @@ body {
   100% { background-position: 0% 50%; }
 }
 
+/* KARTU UTAMA */
 .card {
   width: 90%;
   max-width: 400px;
+  max-height: 85vh;
+  overflow-y: auto;
   padding: 30px;
   border-radius: 24px;
   background: var(--glass);
@@ -54,6 +59,18 @@ body {
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Tambahan untuk memastikan card tidak tergeser */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Menyembunyikan scrollbar bawaan agar tetap rapi */
+.card::-webkit-scrollbar {
+  display: none;
+}
+.card {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .card.visible {
@@ -85,8 +102,12 @@ p {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
+/* PEMBARUAN PADA GAMBAR */
 .media img {
   width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  object-position: center;
   display: block;
   transition: transform 3s ease;
 }
@@ -100,6 +121,7 @@ p {
 
 .btn {
   margin-top: 20px;
+  margin-bottom: 10px;
   padding: 12px 24px;
   border-radius: 999px;
   border: none;
@@ -181,7 +203,7 @@ p {
 <div class="music" onclick="toggleMusic()" id="music-btn" style="display:none;">🎵</div>
 
 <div id="start-screen">
-  <h1 style="font-size: 2em; margin-bottom: 20px;">Halo, Sayang 🤍</h1>
+  <h1 style="font-size: 2em; margin-bottom: 20px;">Hai, Sayangku ❤️</h1>
   <button class="btn show" style="opacity: 1; pointer-events: auto;" onclick="startJourney()">Buka Suratnya</button>
 </div>
 
@@ -190,30 +212,30 @@ p {
 <script>
 const scenes = [
 {
-  title: "Happy 7th Monthversary 🤍",
+  title: "Happy 7th Monthversary! 🎉❤️",
   img: "./foto1.jpg",
-  text: "Hai, Sayang...\n\nNggak kerasa ya, perjalanan kita sudah sampai di bulan ke tujuh. Makasih banyak sudah bersabar menghadapi aku selama ini.",
+  text: "Hai, Cintaku...\n\nNggak kerasa ya, perjalanan kita udah sampai di bulan ke-7 🥳 Walaupun aku sering bikin pusing, makasih banyak udah bertahan sama aku 🥺",
   btn: "Lanjut"
 },
 {
   img: "./foto2.jpg",
-  text: "Aku tahu bulan ini benar-benar nggak mudah buat kita. Kita sempat kehilangan arah, bahkan hampir memilih jalan masing-masing.\n\nTernyata, hidup tanpa kamu itu jauh lebih menakutkan daripada masalah apapun yang kita hadapi. Aku nggak sanggup kalau itu benar-benar terjadi.",
-  btn: "Satu hal lagi..."
+  text: "Jujur, bulan ini berat banget buat kita ya 😔 Kita bahkan sempat 'udahan' sebentar.\n\nTernyata, membayangkan hidup tanpa kamu tuh jauh lebih menakutkan:' Aku nggak bisa ngebayangin harus jalani hari-hari tanpa kamu 🥺",
+  btn: "Masih Ada Lagi..."
 },
 {
   video: "./video.mp4",
-  text: "Video ini isinya semua kenangan manis yang pernah kita buat. Setiap tawa di situ adalah alasan kenapa aku nggak mau menyerah.\n\nAku berharap, ke depannya kita bisa buat jauh lebih banyak kenangan indah lagi. Yang lebih hangat, lebih tenang, dan tentunya... selamanya sama kamu.",
+  text: "Semua momen ini bukan sekadar kenangan.\nIni bukti nyata kalau kita selalu punya alasan untuk terus jalan berdua, sesulit apapun itu🥰 Setiap senyum & tawa di situ bikin aku nggak mau menyerah 💪\n\nSemoga kita bisa bikin lebih banyak lagi kenangan indah Kenangan yang lebih hangat, tenang, dan selamanya sama kamu ❤️",
   btn: "Next"
 },
 {
   img: "./foto3.jpg",
-  text: "Makasih ya, Sayang, sudah mau menurunkan ego dan memilih untuk pulang ke aku lagi. Makasih sudah percaya kalau kita masih punya masa depan.\n\nJanji ya, kalau nanti ada badai lagi, kita jangan lepas pegangan. Berantem secukupnya, tapi sayangnya harus selamanya.",
-  btn: "Terakhir dari hatiku..."
+  text: "Makasih ya, udah mau peluk kurangnya aku lagi 🥺 Makasih udah kasih kita kesempatan kedua ❤️\n\nJanji ya, kalau nanti ada badai, kita jangan lepas pegangan 🤝. Berantem secukupnya, sayangnya selamanya ♾️",
+  btn: "Pesan dari Hatiku..."
 },
 {
-  title: "I Love You, Always 🤍",
-  text: "Mungkin aku bukan yang paling sempurna di dunia ini, tapi aku pastikan kamu adalah satu-satunya yang aku tuju.\n\nSelamat tujuh bulan, Sayang. Mari menua bersama dan saling melengkapi, ya?",
-  btn: "Pesan Terakhir 🤍",
+  title: "I Love You, Always ❤️♾️",
+  text: "Aku bukan yang paling sempurna di dunia, tapi aku pastikan kamu satu-satunya yang aku tuju 🥰\n\nSelamat 7 bulan, Sayang. Mari menua bersama dan saling melengkapi ya? 🤗❤️",
+  btn: "Pesan Terakhir ❤️",
   last: true
 }
 ];
@@ -247,6 +269,8 @@ function typeWriter(element, text, index, buttonElement) {
     typeInterval = setTimeout(() => typeWriter(element, text, index + 1, buttonElement), 50);
   } else {
     buttonElement.classList.add('show');
+    // Scroll otomatis ke bawah tombol kalau kontennya panjang setelah selesai mengetik
+    document.querySelector('.card').scrollTo({ top: document.querySelector('.card').scrollHeight, behavior: 'smooth' });
   }
 }
 
@@ -277,6 +301,10 @@ function renderScene() {
       let textContainer = document.getElementById('text-container');
       let actionBtn = document.getElementById('action-btn');
       clearTimeout(typeInterval);
+      
+      // Auto-scroll ke atas saat pindah scene
+      document.querySelector('.card').scrollTop = 0;
+      
       typeWriter(textContainer, s.text, 0, actionBtn);
     }, 100);
   }, app.children.length > 0 ? 500 : 0);
@@ -294,7 +322,7 @@ function revealFinal() {
   setTimeout(() => {
     let finalHtml = `
     <div class="card" id="card-content">
-      <h1 style="font-style: italic;">Untuk kamu...</h1>
+      <h1 style="font-style: italic;">Untuk kamu... ❤️</h1>
       <p id="text-container"></p>
     </div>
     `;
@@ -302,10 +330,13 @@ function revealFinal() {
 
     setTimeout(() => {
       document.getElementById('card-content').classList.add('visible');
-      let finalText = "Kalau nanti dunia terasa berat lagi, tolong ingat momen kita hari ini.\n\nDari awal, aku selalu memilih kamu. Dan setelah semua yang kita lalui, aku sadar kalau aku akan terus memilih kamu, berulang kali, tanpa ragu sedikit pun.\n\nSelamat hari jadi yang ke-7 bulan, Sayang.\nAku sayang kamu, sangat.";
+      // Pesan terakhir yang membumi tapi tetap romantis
+      let finalText = "Kalau nanti dunia terasa berat, tolong ingat momen kita hari ini 🥰\n\nDari awal, aku selalu memilih kamu. Dan setelah semua yang kita lalui, aku sadar kalau aku akan terus memilih kamu ❤️\n\nUdah terlanjur sayang, repot kalau harus ganti yang baru:'\n\nSelamat 7 bulan, Sayang. \nAku sayang kamu, sangat ❤️";
       let textContainer = document.getElementById('text-container');
       let dummyBtn = document.createElement('div'); 
       clearTimeout(typeInterval);
+      
+      document.querySelector('.card').scrollTop = 0;
       typeWriter(textContainer, finalText, 0, dummyBtn);
     }, 100);
   }, 500);
